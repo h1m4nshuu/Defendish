@@ -1,0 +1,2726 @@
+﻿
+> defendish-backend@1.0.0 test
+> jest ocr.test.ts
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 15/01/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 15/01/2026 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 15/01/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15/01/2026 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 15/01/2025
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 15/01/2026
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 2 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+       ΓÜá∩╕Å Earliest date as MFG: 15/01/2025 (MEDIUM confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:379:19)
+
+  console.log
+       ΓÜá∩╕Å Latest date as EXP: 15/01/2026 (MEDIUM confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:384:19)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 15/01/2025 (medium)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15/01/2026 (medium)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 15/01/2026 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 15/01/2026
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 1 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15/01/2026 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 15/01/2026
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 1 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+       ΓÜá∩╕Å Single date found, assuming EXP: 15/01/2026 (MEDIUM confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:372:19)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15/01/2026 (medium)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 15/01/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 15/01/2025
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       ≡ƒôà Found date (isoDate): 2026-01-15
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 2 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+       ΓÜá∩╕Å Latest date as EXP: 2026-01-15 (MEDIUM confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:384:19)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 15/01/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 2026-01-15 (medium)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (compactDate): 15012025
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       ≡ƒôà Found date (compactDate): 15012026
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 2 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+       ΓÜá∩╕Å Earliest date as MFG: 15012025 (MEDIUM confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:379:19)
+
+  console.log
+       ΓÜá∩╕Å Latest date as EXP: 15012026 (MEDIUM confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:384:19)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 15012025 (medium)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15012026 (medium)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 15/01/2026 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 15/01/2026
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 1 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15/01/2026 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 20/06/2026 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 20/06/2026
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 1 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 20/06/2026 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 01/03/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 01/03/2025
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 1 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+       ΓÜá∩╕Å Single date found, assuming EXP: 01/03/2025 (MEDIUM confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:372:19)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 01/03/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 01/03/2025 (medium)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 10/02/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 10/02/2025
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 1 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+       ΓÜá∩╕Å Single date found, assuming EXP: 10/02/2025 (MEDIUM confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:372:19)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 10/02/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 10/02/2025 (medium)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       Γ¥î No valid dates found
+
+      at extractDatesFromText (src/services/ai.service.ts:388:15)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 15/01/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 15/01/2025
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 1 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+       ΓÜá∩╕Å Single date found, assuming EXP: 15/01/2025 (MEDIUM confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:372:19)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 15/01/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15/01/2025 (medium)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       Γ¥î No valid dates found
+
+      at extractDatesFromText (src/services/ai.service.ts:388:15)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 05/04/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 05/04/2025
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 1 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+       ΓÜá∩╕Å Single date found, assuming EXP: 05/04/2025 (MEDIUM confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:372:19)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 05/04/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 05/04/2025 (medium)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 12/03/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 12/03/2025
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 1 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+       ΓÜá∩╕Å Single date found, assuming EXP: 12/03/2025 (MEDIUM confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:372:19)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 12/03/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 12/03/2025 (medium)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 25/12/2026 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 25/12/2026
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 1 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 25/12/2026 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 30/11/2026 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 30/11/2026
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 1 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 30/11/2026 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 15/01/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 15/01/2026 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 15/01/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15/01/2026 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 15/01/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 15/01/2026 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 15/01/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15/01/2026 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 15/01/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 15/01/2026 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 15/01/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15/01/2026 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒöì Starting enhanced OCR processing...
+
+      at extractDatesFromImage (src/services/ai.service.ts:67:13)
+
+  console.log
+    ≡ƒôè Step 1: Analyzing image quality...
+
+      at extractDatesFromImage (src/services/ai.service.ts:70:13)
+
+  console.log
+    ≡ƒöì Analyzing image quality: clear-product-with-dates.png
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:230:15)
+
+  console.log
+       ≡ƒôè Dimensions: 800x600
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:274:15)
+
+  console.log
+       ≡ƒÆí Avg Brightness: 244/255
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:275:15)
+
+  console.log
+       ≡ƒÄ» Std Deviation: 50
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:276:15)
+
+  console.log
+       ΓÜá∩╕Å  Blurry
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:277:15)
+
+  console.log
+       ΓÜá∩╕Å  Too Light
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:278:15)
+
+  console.log
+       Dimensions: 800x600
+
+      at extractDatesFromImage (src/services/ai.service.ts:73:13)
+
+  console.log
+       Avg Brightness: 244/255
+
+      at extractDatesFromImage (src/services/ai.service.ts:74:13)
+
+  console.log
+       Quality: ΓÜá∩╕Å Blurry
+
+      at extractDatesFromImage (src/services/ai.service.ts:75:13)
+
+  console.log
+    ≡ƒÄ¿ Step 2: Preprocessing image (creating 3 versions)...
+
+      at extractDatesFromImage (src/services/ai.service.ts:92:13)
+
+  console.log
+    ≡ƒô╕ Preprocessing image: clear-product-with-dates.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:88:15)
+
+  console.log
+       Original size: 800x600
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:89:15)
+
+  console.log
+       Γ£à Version 1 (Standard): clear-product-with-dates_processed1.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:109:15)
+
+  console.log
+       Γ£à Version 2 (Binary): clear-product-with-dates_processed2.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:127:15)
+
+  console.log
+       Γ£à Version 3 (Edge Enhanced): clear-product-with-dates_processed3.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:156:15)
+
+  console.log
+    Γ£¿ Preprocessing complete: 3 versions created
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:158:15)
+
+  console.log
+       Created 3 preprocessed versions
+
+      at extractDatesFromImage (src/services/ai.service.ts:94:13)
+
+  console.log
+    ≡ƒôû Step 3: Running OCR on all versions...
+
+      at extractDatesFromImage (src/services/ai.service.ts:97:13)
+
+  console.log
+       Processing version 1/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       OCR Progress [v1]: 0%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 14%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 29%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 43%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 57%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 100%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       Γ£à Version 1: Extracted 84 characters
+
+      at extractDatesFromImage (src/services/ai.service.ts:113:19)
+
+  console.log
+       Processing version 2/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       OCR Progress [v2]: 0%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 14%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 29%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 43%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 57%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 100%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       Γ£à Version 2: Extracted 84 characters
+
+      at extractDatesFromImage (src/services/ai.service.ts:113:19)
+
+  console.log
+       Processing version 3/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       ΓÜá∩╕Å Version 3: No text extracted
+
+      at extractDatesFromImage (src/services/ai.service.ts:115:19)
+
+  console.log
+    ≡ƒöù Step 4: Merging OCR results...
+
+      at extractDatesFromImage (src/services/ai.service.ts:124:13)
+
+  console.log
+       Γ£à Merged 2 OCR texts (173 total characters)
+
+      at extractDatesFromImage (src/services/ai.service.ts:131:15)
+
+  console.log
+    ≡ƒôà Step 5: Extracting dates from text...
+
+      at extractDatesFromImage (src/services/ai.service.ts:134:15)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 15/01/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 15/01/2026 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 15/01/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15/01/2026 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    Γ£à OCR processing complete
+
+      at extractDatesFromImage (src/services/ai.service.ts:159:13)
+
+  console.log
+       MFG: 15/01/2025 (high)
+
+      at extractDatesFromImage (src/services/ai.service.ts:160:13)
+
+  console.log
+       EXP: 15/01/2026 (high)
+
+      at extractDatesFromImage (src/services/ai.service.ts:161:13)
+
+  console.log
+    ≡ƒº╣ Step 6: Cleaning up preprocessed images...
+
+      at extractDatesFromImage (src/services/ai.service.ts:173:15)
+
+  console.log
+    ≡ƒº╣ Cleaning up 3 preprocessed images...
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:181:15)
+
+  console.log
+       Γ£à Deleted: clear-product-with-dates_processed1.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+       Γ£à Deleted: clear-product-with-dates_processed2.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+       Γ£à Deleted: clear-product-with-dates_processed3.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+    Γ£¿ Cleanup complete: 3 deleted, 0 failed
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:202:15)
+
+  console.log
+    ≡ƒöì Starting enhanced OCR processing...
+
+      at extractDatesFromImage (src/services/ai.service.ts:67:13)
+
+  console.log
+    ≡ƒôè Step 1: Analyzing image quality...
+
+      at extractDatesFromImage (src/services/ai.service.ts:70:13)
+
+  console.log
+    ≡ƒöì Analyzing image quality: poor-quality-image.png
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:230:15)
+
+  console.log
+       ≡ƒôè Dimensions: 800x600
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:274:15)
+
+  console.log
+       ≡ƒÆí Avg Brightness: 139/255
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:275:15)
+
+  console.log
+       ≡ƒÄ» Std Deviation: 2
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:276:15)
+
+  console.log
+       ΓÜá∩╕Å  Blurry
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:277:15)
+
+  console.log
+       Γ£à Good Brightness
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:278:15)
+
+  console.log
+       Dimensions: 800x600
+
+      at extractDatesFromImage (src/services/ai.service.ts:73:13)
+
+  console.log
+       Avg Brightness: 139/255
+
+      at extractDatesFromImage (src/services/ai.service.ts:74:13)
+
+  console.log
+       Quality: ΓÜá∩╕Å Blurry
+
+      at extractDatesFromImage (src/services/ai.service.ts:75:13)
+
+  console.log
+    ≡ƒÄ¿ Step 2: Preprocessing image (creating 3 versions)...
+
+      at extractDatesFromImage (src/services/ai.service.ts:92:13)
+
+  console.log
+    ≡ƒô╕ Preprocessing image: poor-quality-image.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:88:15)
+
+  console.log
+       Original size: 800x600
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:89:15)
+
+  console.log
+       Γ£à Version 1 (Standard): poor-quality-image_processed1.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:109:15)
+
+  console.log
+       Γ£à Version 2 (Binary): poor-quality-image_processed2.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:127:15)
+
+  console.log
+       Γ£à Version 3 (Edge Enhanced): poor-quality-image_processed3.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:156:15)
+
+  console.log
+    Γ£¿ Preprocessing complete: 3 versions created
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:158:15)
+
+  console.log
+       Created 3 preprocessed versions
+
+      at extractDatesFromImage (src/services/ai.service.ts:94:13)
+
+  console.log
+    ≡ƒôû Step 3: Running OCR on all versions...
+
+      at extractDatesFromImage (src/services/ai.service.ts:97:13)
+
+  console.log
+       Processing version 1/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       ΓÜá∩╕Å Version 1: No text extracted
+
+      at extractDatesFromImage (src/services/ai.service.ts:115:19)
+
+  console.log
+       Processing version 2/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       OCR Progress [v2]: 0%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 17%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 36%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 53%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 100%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       Γ£à Version 2: Extracted 47 characters
+
+      at extractDatesFromImage (src/services/ai.service.ts:113:19)
+
+  console.log
+       Processing version 3/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       ΓÜá∩╕Å Version 3: No text extracted
+
+      at extractDatesFromImage (src/services/ai.service.ts:115:19)
+
+  console.log
+    ≡ƒöù Step 4: Merging OCR results...
+
+      at extractDatesFromImage (src/services/ai.service.ts:124:13)
+
+  console.log
+       Γ£à Merged 1 OCR texts (47 total characters)
+
+      at extractDatesFromImage (src/services/ai.service.ts:131:15)
+
+  console.log
+    ≡ƒôà Step 5: Extracting dates from text...
+
+      at extractDatesFromImage (src/services/ai.service.ts:134:15)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       Γ¥î No valid dates found
+
+      at extractDatesFromText (src/services/ai.service.ts:388:15)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    Γ£à OCR processing complete
+
+      at extractDatesFromImage (src/services/ai.service.ts:159:13)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromImage (src/services/ai.service.ts:160:13)
+
+  console.log
+       EXP: not found (low)
+
+      at extractDatesFromImage (src/services/ai.service.ts:161:13)
+
+  console.log
+    ≡ƒº╣ Step 6: Cleaning up preprocessed images...
+
+      at extractDatesFromImage (src/services/ai.service.ts:173:15)
+
+  console.log
+    ≡ƒº╣ Cleaning up 3 preprocessed images...
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:181:15)
+
+  console.log
+       Γ£à Deleted: poor-quality-image_processed1.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+       Γ£à Deleted: poor-quality-image_processed2.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+       Γ£à Deleted: poor-quality-image_processed3.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+    Γ£¿ Cleanup complete: 3 deleted, 0 failed
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:202:15)
+
+  console.log
+    ≡ƒöì Starting enhanced OCR processing...
+
+      at extractDatesFromImage (src/services/ai.service.ts:67:13)
+
+  console.log
+    ≡ƒôè Step 1: Analyzing image quality...
+
+      at extractDatesFromImage (src/services/ai.service.ts:70:13)
+
+  console.log
+    ≡ƒöì Analyzing image quality: no-dates-image.png
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:230:15)
+
+  console.log
+       ≡ƒôè Dimensions: 800x600
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:274:15)
+
+  console.log
+       ≡ƒÆí Avg Brightness: 244/255
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:275:15)
+
+  console.log
+       ≡ƒÄ» Std Deviation: 49
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:276:15)
+
+  console.log
+       ΓÜá∩╕Å  Blurry
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:277:15)
+
+  console.log
+       ΓÜá∩╕Å  Too Light
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:278:15)
+
+  console.log
+       Dimensions: 800x600
+
+      at extractDatesFromImage (src/services/ai.service.ts:73:13)
+
+  console.log
+       Avg Brightness: 244/255
+
+      at extractDatesFromImage (src/services/ai.service.ts:74:13)
+
+  console.log
+       Quality: ΓÜá∩╕Å Blurry
+
+      at extractDatesFromImage (src/services/ai.service.ts:75:13)
+
+  console.log
+    ≡ƒÄ¿ Step 2: Preprocessing image (creating 3 versions)...
+
+      at extractDatesFromImage (src/services/ai.service.ts:92:13)
+
+  console.log
+    ≡ƒô╕ Preprocessing image: no-dates-image.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:88:15)
+
+  console.log
+       Original size: 800x600
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:89:15)
+
+  console.log
+       Γ£à Version 1 (Standard): no-dates-image_processed1.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:109:15)
+
+  console.log
+       Γ£à Version 2 (Binary): no-dates-image_processed2.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:127:15)
+
+  console.log
+       Γ£à Version 3 (Edge Enhanced): no-dates-image_processed3.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:156:15)
+
+  console.log
+    Γ£¿ Preprocessing complete: 3 versions created
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:158:15)
+
+  console.log
+       Created 3 preprocessed versions
+
+      at extractDatesFromImage (src/services/ai.service.ts:94:13)
+
+  console.log
+    ≡ƒôû Step 3: Running OCR on all versions...
+
+      at extractDatesFromImage (src/services/ai.service.ts:97:13)
+
+  console.log
+       Processing version 1/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       OCR Progress [v1]: 0%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 14%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 29%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 43%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 57%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 100%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       Γ£à Version 1: Extracted 84 characters
+
+      at extractDatesFromImage (src/services/ai.service.ts:113:19)
+
+  console.log
+       Processing version 2/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       OCR Progress [v2]: 0%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 14%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 29%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 43%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 57%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 100%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       Γ£à Version 2: Extracted 84 characters
+
+      at extractDatesFromImage (src/services/ai.service.ts:113:19)
+
+  console.log
+       Processing version 3/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       ΓÜá∩╕Å Version 3: No text extracted
+
+      at extractDatesFromImage (src/services/ai.service.ts:115:19)
+
+  console.log
+    ≡ƒöù Step 4: Merging OCR results...
+
+      at extractDatesFromImage (src/services/ai.service.ts:124:13)
+
+  console.log
+       Γ£à Merged 2 OCR texts (173 total characters)
+
+      at extractDatesFromImage (src/services/ai.service.ts:131:15)
+
+  console.log
+    ≡ƒôà Step 5: Extracting dates from text...
+
+      at extractDatesFromImage (src/services/ai.service.ts:134:15)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       Γ¥î No valid dates found
+
+      at extractDatesFromText (src/services/ai.service.ts:388:15)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    Γ£à OCR processing complete
+
+      at extractDatesFromImage (src/services/ai.service.ts:159:13)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromImage (src/services/ai.service.ts:160:13)
+
+  console.log
+       EXP: not found (low)
+
+      at extractDatesFromImage (src/services/ai.service.ts:161:13)
+
+  console.log
+    ≡ƒº╣ Step 6: Cleaning up preprocessed images...
+
+      at extractDatesFromImage (src/services/ai.service.ts:173:15)
+
+  console.log
+    ≡ƒº╣ Cleaning up 3 preprocessed images...
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:181:15)
+
+  console.log
+       Γ£à Deleted: no-dates-image_processed1.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+       Γ£à Deleted: no-dates-image_processed2.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+       Γ£à Deleted: no-dates-image_processed3.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+    Γ£¿ Cleanup complete: 3 deleted, 0 failed
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:202:15)
+
+  console.log
+    ≡ƒöì Starting enhanced OCR processing...
+
+      at extractDatesFromImage (src/services/ai.service.ts:67:13)
+
+  console.log
+    ≡ƒôè Step 1: Analyzing image quality...
+
+      at extractDatesFromImage (src/services/ai.service.ts:70:13)
+
+  console.log
+    ≡ƒöì Analyzing image quality: multiple-date-formats.png
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:230:15)
+
+  console.log
+       ≡ƒôè Dimensions: 800x600
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:274:15)
+
+  console.log
+       ≡ƒÆí Avg Brightness: 243/255
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:275:15)
+
+  console.log
+       ≡ƒÄ» Std Deviation: 51
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:276:15)
+
+  console.log
+       Γ£à Sharp
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:277:15)
+
+  console.log
+       ΓÜá∩╕Å  Too Light
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:278:15)
+
+  console.log
+       Dimensions: 800x600
+
+      at extractDatesFromImage (src/services/ai.service.ts:73:13)
+
+  console.log
+       Avg Brightness: 243/255
+
+      at extractDatesFromImage (src/services/ai.service.ts:74:13)
+
+  console.log
+       Quality: Γ£à Sharp
+
+      at extractDatesFromImage (src/services/ai.service.ts:75:13)
+
+  console.log
+    ≡ƒÄ¿ Step 2: Preprocessing image (creating 3 versions)...
+
+      at extractDatesFromImage (src/services/ai.service.ts:92:13)
+
+  console.log
+    ≡ƒô╕ Preprocessing image: multiple-date-formats.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:88:15)
+
+  console.log
+       Original size: 800x600
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:89:15)
+
+  console.log
+       Γ£à Version 1 (Standard): multiple-date-formats_processed1.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:109:15)
+
+  console.log
+       Γ£à Version 2 (Binary): multiple-date-formats_processed2.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:127:15)
+
+  console.log
+       Γ£à Version 3 (Edge Enhanced): multiple-date-formats_processed3.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:156:15)
+
+  console.log
+    Γ£¿ Preprocessing complete: 3 versions created
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:158:15)
+
+  console.log
+       Created 3 preprocessed versions
+
+      at extractDatesFromImage (src/services/ai.service.ts:94:13)
+
+  console.log
+    ≡ƒôû Step 3: Running OCR on all versions...
+
+      at extractDatesFromImage (src/services/ai.service.ts:97:13)
+
+  console.log
+       Processing version 1/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       OCR Progress [v1]: 0%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 14%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 29%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 43%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 57%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 100%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       Γ£à Version 1: Extracted 85 characters
+
+      at extractDatesFromImage (src/services/ai.service.ts:113:19)
+
+  console.log
+       Processing version 2/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       OCR Progress [v2]: 0%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 14%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 29%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 43%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 57%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 100%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       Γ£à Version 2: Extracted 85 characters
+
+      at extractDatesFromImage (src/services/ai.service.ts:113:19)
+
+  console.log
+       Processing version 3/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       ΓÜá∩╕Å Version 3: No text extracted
+
+      at extractDatesFromImage (src/services/ai.service.ts:115:19)
+
+  console.log
+    ≡ƒöù Step 4: Merging OCR results...
+
+      at extractDatesFromImage (src/services/ai.service.ts:124:13)
+
+  console.log
+       Γ£à Merged 2 OCR texts (175 total characters)
+
+      at extractDatesFromImage (src/services/ai.service.ts:131:15)
+
+  console.log
+    ≡ƒôà Step 5: Extracting dates from text...
+
+      at extractDatesFromImage (src/services/ai.service.ts:134:15)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 15/01/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 15/01/2025
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       ≡ƒôà Found date (isoDate): 2026-01-15
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       ≡ƒôà Found date (compactDate): 15012025
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 3 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+       ΓÜá∩╕Å Latest date as EXP: 15012025 (MEDIUM confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:384:19)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 15/01/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15012025 (medium)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    Γ£à OCR processing complete
+
+      at extractDatesFromImage (src/services/ai.service.ts:159:13)
+
+  console.log
+       MFG: 15/01/2025 (high)
+
+      at extractDatesFromImage (src/services/ai.service.ts:160:13)
+
+  console.log
+       EXP: 15012025 (medium)
+
+      at extractDatesFromImage (src/services/ai.service.ts:161:13)
+
+  console.log
+    ≡ƒº╣ Step 6: Cleaning up preprocessed images...
+
+      at extractDatesFromImage (src/services/ai.service.ts:173:15)
+
+  console.log
+    ≡ƒº╣ Cleaning up 3 preprocessed images...
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:181:15)
+
+  console.log
+       Γ£à Deleted: multiple-date-formats_processed1.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+       Γ£à Deleted: multiple-date-formats_processed2.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+       Γ£à Deleted: multiple-date-formats_processed3.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+    Γ£¿ Cleanup complete: 3 deleted, 0 failed
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:202:15)
+
+  console.log
+    ≡ƒöì Starting enhanced OCR processing...
+
+      at extractDatesFromImage (src/services/ai.service.ts:67:13)
+
+  console.log
+    ≡ƒôè Step 1: Analyzing image quality...
+
+      at extractDatesFromImage (src/services/ai.service.ts:70:13)
+
+  console.log
+    ≡ƒöì Analyzing image quality: best-before-only.png
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:230:15)
+
+  console.log
+       ≡ƒôè Dimensions: 800x600
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:274:15)
+
+  console.log
+       ≡ƒÆí Avg Brightness: 245/255
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:275:15)
+
+  console.log
+       ≡ƒÄ» Std Deviation: 48
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:276:15)
+
+  console.log
+       ΓÜá∩╕Å  Blurry
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:277:15)
+
+  console.log
+       ΓÜá∩╕Å  Too Light
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:278:15)
+
+  console.log
+       Dimensions: 800x600
+
+      at extractDatesFromImage (src/services/ai.service.ts:73:13)
+
+  console.log
+       Avg Brightness: 245/255
+
+      at extractDatesFromImage (src/services/ai.service.ts:74:13)
+
+  console.log
+       Quality: ΓÜá∩╕Å Blurry
+
+      at extractDatesFromImage (src/services/ai.service.ts:75:13)
+
+  console.log
+    ≡ƒÄ¿ Step 2: Preprocessing image (creating 3 versions)...
+
+      at extractDatesFromImage (src/services/ai.service.ts:92:13)
+
+  console.log
+    ≡ƒô╕ Preprocessing image: best-before-only.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:88:15)
+
+  console.log
+       Original size: 800x600
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:89:15)
+
+  console.log
+       Γ£à Version 1 (Standard): best-before-only_processed1.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:109:15)
+
+  console.log
+       Γ£à Version 2 (Binary): best-before-only_processed2.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:127:15)
+
+  console.log
+       Γ£à Version 3 (Edge Enhanced): best-before-only_processed3.png
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:156:15)
+
+  console.log
+    Γ£¿ Preprocessing complete: 3 versions created
+
+      at ImagePreprocessor.preprocess (src/utils/imagePreprocessing.ts:158:15)
+
+  console.log
+       Created 3 preprocessed versions
+
+      at extractDatesFromImage (src/services/ai.service.ts:94:13)
+
+  console.log
+    ≡ƒôû Step 3: Running OCR on all versions...
+
+      at extractDatesFromImage (src/services/ai.service.ts:97:13)
+
+  console.log
+       Processing version 1/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       OCR Progress [v1]: 0%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 17%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 36%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 53%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v1]: 100%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       Γ£à Version 1: Extracted 77 characters
+
+      at extractDatesFromImage (src/services/ai.service.ts:113:19)
+
+  console.log
+       Processing version 2/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       OCR Progress [v2]: 0%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 17%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 36%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 53%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       OCR Progress [v2]: 100%
+
+      at logger (src/services/ai.service.ts:106:23)
+
+  console.log
+       Γ£à Version 2: Extracted 77 characters
+
+      at extractDatesFromImage (src/services/ai.service.ts:113:19)
+
+  console.log
+       Processing version 3/3...
+
+      at extractDatesFromImage (src/services/ai.service.ts:102:17)
+
+  console.log
+       ΓÜá∩╕Å Version 3: No text extracted
+
+      at extractDatesFromImage (src/services/ai.service.ts:115:19)
+
+  console.log
+    ≡ƒöù Step 4: Merging OCR results...
+
+      at extractDatesFromImage (src/services/ai.service.ts:124:13)
+
+  console.log
+       Γ£à Merged 2 OCR texts (159 total characters)
+
+      at extractDatesFromImage (src/services/ai.service.ts:131:15)
+
+  console.log
+    ≡ƒôà Step 5: Extracting dates from text...
+
+      at extractDatesFromImage (src/services/ai.service.ts:134:15)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 20/06/2026 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 20/06/2026
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 1 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 20/06/2026 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    Γ£à OCR processing complete
+
+      at extractDatesFromImage (src/services/ai.service.ts:159:13)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromImage (src/services/ai.service.ts:160:13)
+
+  console.log
+       EXP: 20/06/2026 (high)
+
+      at extractDatesFromImage (src/services/ai.service.ts:161:13)
+
+  console.log
+    ≡ƒº╣ Step 6: Cleaning up preprocessed images...
+
+      at extractDatesFromImage (src/services/ai.service.ts:173:15)
+
+  console.log
+    ≡ƒº╣ Cleaning up 3 preprocessed images...
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:181:15)
+
+  console.log
+       Γ£à Deleted: best-before-only_processed1.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+       Γ£à Deleted: best-before-only_processed2.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+       Γ£à Deleted: best-before-only_processed3.png
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:191:21)
+
+  console.log
+    Γ£¿ Cleanup complete: 3 deleted, 0 failed
+
+      at ImagePreprocessor.cleanup (src/utils/imagePreprocessing.ts:202:15)
+
+  console.log
+    ≡ƒöì Starting enhanced OCR processing...
+
+      at extractDatesFromImage (src/services/ai.service.ts:67:13)
+
+  console.log
+    ≡ƒôè Step 1: Analyzing image quality...
+
+      at extractDatesFromImage (src/services/ai.service.ts:70:13)
+
+  console.error
+    Γ¥î Quality analysis failed: Image file not found: C:\Users\himan\Desktop\defendish\backend\tests\fixtures\images\non-existent-image.png
+
+    [0m [90m 282 |[39m     } [36mcatch[39m (error) {
+     [90m 283 |[39m       [36mconst[39m errorMessage [33m=[39m error [36minstanceof[39m [33mError[39m [33m?[39m error[33m.[39mmessage [33m:[39m [32m'Unknown error'[39m[33m;[39m
+    [31m[1m>[22m[39m[90m 284 |[39m       console[33m.[39merror([32m`Γ¥î Quality analysis failed: ${errorMessage}`[39m)[33m;[39m
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 285 |[39m       [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to analyze image quality: ${errorMessage}`[39m)[33m;[39m
+     [90m 286 |[39m     }
+     [90m 287 |[39m   }[0m
+
+      at ImagePreprocessor.analyzeQuality (src/utils/imagePreprocessing.ts:284:15)
+      at extractDatesFromImage (src/services/ai.service.ts:71:40)
+      at Object.<anonymous> (tests/ocr.test.ts:353:49)
+
+  console.error
+    Γ¥î OCR Error: Failed to analyze image quality: Image file not found: C:\Users\himan\Desktop\defendish\backend\tests\fixtures\images\non-existent-image.png
+
+    [0m [90m 164 |[39m
+     [90m 165 |[39m   } [36mcatch[39m (error[33m:[39m any) {
+    [31m[1m>[22m[39m[90m 166 |[39m     console[33m.[39merror([32m'Γ¥î OCR Error:'[39m[33m,[39m error[33m.[39mmessage)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 167 |[39m     result[33m.[39mqualityIssues[33m.[39mpush([32m`OCR processing failed: ${error.message}`[39m)[33m;[39m
+     [90m 168 |[39m     result[33m.[39mwarnings[33m?[39m[33m.[39mpush([32m'An error occurred during text extraction'[39m)[33m;[39m
+     [90m 169 |[39m     [36mreturn[39m result[33m;[39m[0m
+
+      at extractDatesFromImage (src/services/ai.service.ts:166:13)
+      at Object.<anonymous> (tests/ocr.test.ts:353:22)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 15/01/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒöì Step B: Extracting all dates without keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:341:13)
+
+  console.log
+       ≡ƒôà Found date (slashDate): 15/01/2025
+
+      at extractDatesFromText (src/services/ai.service.ts:352:19)
+
+  console.log
+       Found 1 total dates
+
+      at extractDatesFromText (src/services/ai.service.ts:358:15)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: not found (low)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15/01/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 15/01/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 15/01/2026 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 15/01/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15/01/2026 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 15/01/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 15/01/2026 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 15/01/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 15/01/2026 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+  console.log
+    ≡ƒô¥ Extracting dates from text...
+
+      at extractDatesFromText (src/services/ai.service.ts:271:11)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with MFG keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:309:11)
+
+  console.log
+       Γ£à Found MFG date with keyword: 25/12/2025 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:318:17)
+
+  console.log
+    ≡ƒöì Step A: Looking for dates with EXP keywords...
+
+      at extractDatesFromText (src/services/ai.service.ts:324:11)
+
+  console.log
+       Γ£à Found EXP date with keyword: 25/12/2026 (HIGH confidence)
+
+      at extractDatesFromText (src/services/ai.service.ts:333:17)
+
+  console.log
+    ≡ƒôè Date extraction complete:
+
+      at extractDatesFromText (src/services/ai.service.ts:405:11)
+
+  console.log
+       MFG: 25/12/2025 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:406:11)
+
+  console.log
+       EXP: 25/12/2026 (high)
+
+      at extractDatesFromText (src/services/ai.service.ts:407:11)
+
+node.exe : FAIL tests/ocr.test.ts (9.31 s)
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (FAIL tests/ocr.test.ts (9.31 s):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  OCR Date Extraction
+    extractDatesFromText
+      ΓêÜ should extract dates with MFG/EXP keywords with HIGH confidence (40 ms)
+      ΓêÜ should extract dates without keywords with MEDIUM confidence (9 ms)
+      ΓêÜ should extract only expiry date when MFG is missing (10 ms)
+      ΓêÜ should assume single date is expiry when no keywords (6 ms)
+      ├ù should extract multiple date formats correctly (9 ms)
+      ΓêÜ should extract compact date format (DDMMYYYY) (7 ms)
+      ΓêÜ should extract BEST BEFORE date with HIGH confidence (9 ms)
+      ΓêÜ should extract USE BY date with HIGH confidence (6 ms)
+      ΓêÜ should extract MANUFACTURED date with HIGH confidence (6 ms)
+      ΓêÜ should extract PACKED date as manufacturing with HIGH confidence (7 ms)
+      ΓêÜ should reject dates outside 2020-2030 range (5 ms)
+      ΓêÜ should accept valid date and reject invalid date (7 ms)
+      ΓêÜ should return null when no dates are found (8 ms)
+      ΓêÜ should extract MFD (Manufacturing Date) keyword (7 ms)
+      ΓêÜ should extract PRODUCTION date keyword (7 ms)
+      ΓêÜ should extract EXPIRES keyword (6 ms)
+      ΓêÜ should extract VALID UNTIL keyword (8 ms)
+      ΓêÜ should handle dates in any order in text (7 ms)
+      ΓêÜ should handle keywords in different cases (5 ms)
+      ΓêÜ should handle extra whitespace around keywords and dates (6 ms)
+    extractDatesFromImage
+      ΓêÜ should extract dates from clear product image (1678 ms)
+      ΓêÜ should detect quality issues in poor quality image (1388 ms)
+      ΓêÜ should handle image with no dates gracefully (1610 ms)
+      ΓêÜ should extract multiple date formats from image (1446 ms)
+      ΓêÜ should extract BEST BEFORE date from image (1374 ms)
+      ΓêÜ should handle non-existent image error gracefully (14 ms)
+    isValidDate
+      ΓêÜ should handle various separators
+      ΓêÜ should reject very old dates
+      ΓêÜ should reject dates with wrong century
+      should accept valid dates
+        ΓêÜ DD/MM/YYYY format (1 ms)
+        ΓêÜ YYYY-MM-DD format (ISO)
+        ΓêÜ dates at boundaries (2020-2030) (1 ms)
+      should reject invalid dates
+        ΓêÜ dates too old (before 2020)
+        ΓêÜ dates too far in future (after 2030)
+        ΓêÜ invalid date strings (1 ms)
+        ΓêÜ malformed dates
+    Integration Tests
+      ΓêÜ extractDatesFromText should use isValidDate for validation (5 ms)
+      ΓêÜ should handle real-world product text format (3 ms)
+      ΓêÜ should prioritize keywords over standalone dates (4 ms)
+      ΓêÜ should handle Indian date format (DD/MM/YYYY) correctly (4 ms)
+
+  ΓùÅ OCR Date Extraction ΓÇ║ extractDatesFromText ΓÇ║ should extract multiple date formats correctly
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "high"
+    Received: "medium"
+
+    [0m [90m 75 |[39m       expect(result[33m.[39mmfgConfidence)[33m.[39mtoBe([32m'high'[39m)[33m;[39m
+     [90m 76 |[39m       [90m// ISO format is extracted with HIGH confidence when EXP keyword is present[39m
+    [31m[1m>[22m[39m[90m 77 |[39m       
+expect(result[33m.[39mexpConfidence)[33m.[39mtoBe([32m'high'[39m)[33m;[39m
+     [90m    |[39m                                    [31m[1m^[22m[39m
+     [90m 78 |[39m     })[33m;[39m
+     [90m 79 |[39m
+     [90m 80 |[39m     [90m// Test Case 4b: Compact date format (DDMMYYYY)[39m[0m
+
+      at Object.<anonymous> (tests/ocr.test.ts:77:36)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 39 passed, 40 total
+Snapshots:   0 total
+Time:        9.564 s
+Ran all test suites matching ocr.test.ts.
