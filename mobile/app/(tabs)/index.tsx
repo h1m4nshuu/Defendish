@@ -1,10 +1,19 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert, RefreshControl, BackHandler, Modal, TextInput, ScrollView, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import { productService, ProductFilters } from '../../services/product.service';
 import { profileService } from '../../services/profile.service';
 import { userService } from '../../services/user.service';
 import { authService } from '../../services/auth.service';
+import NuriButton from '../../components/NuriButton';
+
+interface InAppNotification {
+  id: string;
+  title: string;
+  subtitle: string;
+  icon: string;
+  tone: 'danger' | 'warning';
+}
 
 const ALLERGEN_OPTIONS = [
   'Peanuts',
@@ -37,6 +46,7 @@ export default function ProductsScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
+  const [showNotificationsModal, setShowNotificationsModal] = useState(false);
   
   // Search and filter state
   const [searchQuery, setSearchQuery] = useState('');
@@ -235,6 +245,42 @@ export default function ProductsScreen() {
     }
   };
 
+  const notifications = useMemo<InAppNotification[]>(() => {
+    const list: InAppNotification[] = [];
+
+    (products as any[]).forEach((product) => {
+      if (hasAllergenWarning(product)) {
+        list.push({
+          id: `allergen-${product.id}`,
+          title: `${product.name} may contain your allergens`,
+          subtitle: 'Please review ingredients carefully.',
+          icon: '⚠️',
+          tone: 'danger',
+        });
+      }
+
+      if (product.expiryStatus === 'expired') {
+        list.push({
+          id: `expired-${product.id}`,
+          title: `${product.name} is expired`,
+          subtitle: 'Please remove or replace this product.',
+          icon: '⛔',
+          tone: 'danger',
+        });
+      } else if (product.expiryStatus === 'expiring_today' || product.expiryStatus === 'expiring_soon') {
+        list.push({
+          id: `expiring-${product.id}`,
+          title: `${product.name} is expiring soon`,
+          subtitle: product.expiryDate ? `Time left: ${getExpiryCountdown(product.expiryDate)}` : 'Please consume soon.',
+          icon: '⏰',
+          tone: 'warning',
+        });
+      }
+    });
+
+    return list;
+  }, [products, userAllergens]);
+
   if (loading) {
     return (
       <View style={styles.centerContainer}>
@@ -259,6 +305,19 @@ export default function ProductsScreen() {
           <Text style={styles.headerSubtitle}>{currentProfile.name}'s Pantry</Text>
         </View>
         <View style={styles.headerActions}>
+          <TouchableOpacity
+            style={styles.notificationButton}
+            onPress={() => setShowNotificationsModal(true)}
+          >
+            <Text style={styles.notificationIcon}>🔔</Text>
+            {notifications.length > 0 && (
+              <View style={styles.notificationBadge}>
+                <Text style={styles.notificationBadgeText}>
+                  {notifications.length > 9 ? '9+' : notifications.length}
+                </Text>
+              </View>
+            )}
+          </TouchableOpacity>
           <TouchableOpacity
             style={styles.profileButton}
             onPress={() => router.push('/profile')}
@@ -403,12 +462,74 @@ export default function ProductsScreen() {
         />
       )}
 
-      <TouchableOpacity
-        style={styles.fab}
-        onPress={() => setShowAddModal(true)}
+      <NuriButton
+        source="home"
+        context={{
+          source: 'home',
+          profile: {
+            id: currentProfile?.id,
+            name: currentProfile?.name,
+            relation: currentProfile?.relation,
+            allergies: userAllergens,
+          },
+        }}
+        side="left"
+        leftOffset={20}
+        bottomOffset={80}
+      />
+
+      <Modal
+        visible={showNotificationsModal}
+        transparent={true}
+        animationType="fade"
+        onRequestClose={() => setShowNotificationsModal(false)}
       >
-        <Text style={styles.fabIcon}>+</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.notificationsOverlay}
+          activeOpacity={1}
+          onPress={() => setShowNotificationsModal(false)}
+        >
+          <TouchableOpacity
+            style={styles.notificationsCard}
+            activeOpacity={1}
+            onPress={(e) => e.stopPropagation()}
+          >
+            <View style={styles.notificationsHeader}>
+              <Text style={styles.notificationsTitle}>Notifications</Text>
+              <TouchableOpacity onPress={() => setShowNotificationsModal(false)}>
+                <Text style={styles.notificationsClose}>✕</Text>
+              </TouchableOpacity>
+            </View>
+
+            {notifications.length === 0 ? (
+              <View style={styles.notificationsEmptyWrap}>
+                <Text style={styles.notificationsEmptyIcon}>✅</Text>
+                <Text style={styles.notificationsEmptyText}>
+                  You are safe, if there is any cause it will appear here.
+                </Text>
+              </View>
+            ) : (
+              <ScrollView style={styles.notificationsList}>
+                {notifications.map((item) => (
+                  <View
+                    key={item.id}
+                    style={[
+                      styles.notificationItem,
+                      item.tone === 'danger' ? styles.notificationItemDanger : styles.notificationItemWarning,
+                    ]}
+                  >
+                    <Text style={styles.notificationItemIcon}>{item.icon}</Text>
+                    <View style={styles.notificationItemBody}>
+                      <Text style={styles.notificationItemTitle}>{item.title}</Text>
+                      <Text style={styles.notificationItemSubtitle}>{item.subtitle}</Text>
+                    </View>
+                  </View>
+                ))}
+              </ScrollView>
+            )}
+          </TouchableOpacity>
+        </TouchableOpacity>
+      </Modal>
 
       {/* Add Product Modal */}
       <Modal
@@ -587,6 +708,35 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
+  },
+  notificationButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#f3f4f6',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+  },
+  notificationIcon: {
+    fontSize: 20,
+  },
+  notificationBadge: {
+    position: 'absolute',
+    top: 2,
+    right: 2,
+    backgroundColor: '#dc2626',
+    borderRadius: 10,
+    minWidth: 18,
+    height: 18,
+    paddingHorizontal: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  notificationBadgeText: {
+    color: '#ffffff',
+    fontSize: 10,
+    fontWeight: '700',
   },
   profileButton: {
     width: 40,
@@ -791,26 +941,88 @@ const styles = StyleSheet.create({
     color: '#6b7280',
     fontSize: 14,
   },
-  fab: {
-    position: 'absolute',
-    bottom: 80,
-    right: 20,
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: '#2563eb',
+  notificationsOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 8,
+    paddingHorizontal: 20,
   },
-  fabIcon: {
-    color: '#ffffff',
-    fontSize: 32,
-    fontWeight: '300',
+  notificationsCard: {
+    width: '100%',
+    maxWidth: 420,
+    maxHeight: '75%',
+    backgroundColor: '#ffffff',
+    borderRadius: 16,
+    padding: 16,
+  },
+  notificationsHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  notificationsTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: '#1f2937',
+  },
+  notificationsClose: {
+    fontSize: 24,
+    color: '#6b7280',
+  },
+  notificationsEmptyWrap: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 28,
+    paddingHorizontal: 12,
+  },
+  notificationsEmptyIcon: {
+    fontSize: 40,
+    marginBottom: 10,
+  },
+  notificationsEmptyText: {
+    fontSize: 15,
+    textAlign: 'center',
+    color: '#374151',
+    lineHeight: 22,
+  },
+  notificationsList: {
+    marginTop: 2,
+  },
+  notificationItem: {
+    flexDirection: 'row',
+    borderRadius: 12,
+    padding: 12,
+    marginBottom: 10,
+    borderWidth: 1,
+  },
+  notificationItemDanger: {
+    backgroundColor: '#fef2f2',
+    borderColor: '#fecaca',
+  },
+  notificationItemWarning: {
+    backgroundColor: '#fffbeb',
+    borderColor: '#fde68a',
+  },
+  notificationItemIcon: {
+    fontSize: 20,
+    marginRight: 10,
+    marginTop: 2,
+  },
+  notificationItemBody: {
+    flex: 1,
+  },
+  notificationItemTitle: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: '#1f2937',
+    marginBottom: 2,
+  },
+  notificationItemSubtitle: {
+    fontSize: 13,
+    color: '#4b5563',
+    lineHeight: 18,
   },
   modalOverlay: {
     flex: 1,

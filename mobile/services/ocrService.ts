@@ -7,17 +7,13 @@
 import axios, { AxiosError } from 'axios';
 import * as FileSystem from 'expo-file-system';
 import { CapturedFrame } from '../utils/frameCapture';
+import { getApiBaseUrl } from './apiConfig';
 
 // ==================================================================
 // API CONFIGURATION
 // ==================================================================
 
-// API Configuration
-import { Platform } from 'react-native';
-
-const API_BASE_URL = Platform.OS === 'web'
-  ? 'http://localhost:5000/api'
-  : 'http://10.131.93.32:5000/api';  // Physical device - use computer's IP
+const API_BASE_URL = getApiBaseUrl();
 
 console.log('OCR API URL:', API_BASE_URL);
 

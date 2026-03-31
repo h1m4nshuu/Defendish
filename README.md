@@ -1,219 +1,271 @@
 # Defendish
 
-**Family Food Safety & Allergy Assistance App**
+Family Food Safety and Allergy Assistance app with:
+- A backend API in Node.js, Express, TypeScript, and Prisma
+- A mobile app in React Native and Expo
 
-A comprehensive mobile application that helps families identify whether food products are safe to consume based on ingredients, allergies, expiry dates, and health conditions.
+This README is written so a new developer can:
+1. Understand what this project does
+2. Run it locally without guessing
+3. Fix common setup/runtime problems quickly
+4. Suggest better solutions when issues happen
 
-## 🎯 Project Structure
+## What Defendish Does
 
+Defendish helps families decide if a food product is safe for a specific profile (self, child, parent, etc.) by using:
+- Allergy and health profile data
+- Ingredient analysis and suitability checks
+- Expiry tracking
+- Health incident reporting
+
+## Repository Structure
+
+```text
+defendish-clean/
+|-- backend/    # API server
+|   |-- src/
+|   |-- prisma/
+|   |-- tests/
+|   `-- package.json
+|-- mobile/     # Expo app
+|   |-- app/
+|   |-- components/
+|   |-- services/
+|   `-- package.json
+|-- SETUP_GUIDE.md
+`-- README.md
 ```
-defendish/
-├── backend/          # Node.js + Express + TypeScript API
-│   ├── src/
-│   │   ├── controllers/
-│   │   ├── routes/
-│   │   ├── services/
-│   │   ├── middleware/
-│   │   └── server.ts
-│   ├── prisma/
-│   │   └── schema.prisma
-│   └── package.json
-│
-└── mobile/          # React Native + Expo app
-    ├── app/
-    │   ├── (tabs)/
-    │   ├── profile/
-    │   ├── product/
-    │   └── _layout.tsx
-    ├── services/
-    └── package.json
-```
 
-## ✨ MVP Features
+## Tech Stack
 
-### Authentication
-- ✅ Email + OTP verification
-- ✅ Secure JWT-based authentication
-- ✅ Password-protected profile switching
+Backend:
+- Node.js + Express
+- TypeScript
+- PostgreSQL + Prisma
+- JWT auth + OTP email flow
 
-### Profile Management
-- ✅ Multi-profile support (self, child, parent, other)
-- ✅ Health data storage (age, blood group, height, weight)
-- ✅ Allergy list management
-- ✅ Isolated profile data
+Mobile:
+- React Native + Expo
+- Expo Router
+- TypeScript
+- AsyncStorage
 
-### Product Scanning & Management
-- ✅ Barcode scanning
-- ✅ Manual product entry
-- ✅ Ingredient parsing
-- ✅ Expiry date tracking
-- ✅ Product suitability marking (✅/❌)
+## Prerequisites
 
-### AI-Powered Analysis
-- ✅ Rule-based allergen detection
-- ✅ Explainable recommendations
-- ✅ Conflict warnings (user decision vs AI analysis)
-- ✅ Confidence scoring
+Install these before setup:
+- Node.js 18+
+- npm 9+
+- PostgreSQL (running locally or remote)
+- Expo Go app (for physical device testing)
 
-### Expiry Tracking
-- ✅ Automatic expiry monitoring
-- ✅ Email alerts (7 days, 1 day, 0 days)
-- ✅ Visual status indicators
+Recommended on Windows:
+- PowerShell terminal
+- Android Studio (for Android emulator)
 
-### Health Incident Management
-- ✅ Symptom reporting
-- ✅ Severity-based recommendations
-- ✅ Incident history tracking
+## Quick Start
 
-## 🚀 Getting Started
+Run backend and mobile in separate terminals.
 
-### Backend Setup
+### 1) Backend Setup
 
-1. Navigate to backend directory:
-```bash
+```powershell
 cd backend
-```
-
-2. Install dependencies:
-```bash
 npm install
+Copy-Item .env.example .env
 ```
 
-3. Create `.env` file:
-```bash
-cp .env.example .env
+Open backend/.env and set at least:
+- DATABASE_URL
+- JWT_SECRET
+- EMAIL_USER
+- EMAIL_PASSWORD
+
+Then run:
+
+```powershell
+npm run db:generate
+npm run db:migrate
+npm run dev
 ```
 
-4. Configure environment variables in `.env`:
-   - Database URL (PostgreSQL)
-   - JWT secret
-   - Email credentials (for OTP)
+Backend default URL:
+- http://localhost:5000
 
-5. Initialize database:
-```bash
+### 2) Mobile Setup
+
+```powershell
+cd mobile
+npm install
+npm start
+```
+
+From Expo terminal:
+- Press a to open Android
+- Press i for iOS (macOS only)
+- Or scan QR with Expo Go
+
+## Environment Configuration
+
+Backend env template exists at backend/.env.example.
+
+Important values:
+- PORT=5000
+- NODE_ENV=development
+- DATABASE_URL=postgresql://...
+- JWT_SECRET=...
+- EMAIL_HOST=smtp.gmail.com
+- EMAIL_PORT=587
+- EMAIL_USER=...
+- EMAIL_PASSWORD=...
+
+## Main NPM Scripts
+
+Backend (run inside backend):
+- npm run dev: start API with watch mode
+- npm run build: build TypeScript
+- npm run test: run tests
+- npm run db:generate: generate Prisma client
+- npm run db:migrate: run migrations
+
+Mobile (run inside mobile):
+- npm start: start Expo
+- npm run android: native Android run
+- npm run ios: native iOS run
+- npm run web: start web target
+- npm run reset: start Expo with cleared cache
+
+## API Overview
+
+Base URL:
+- http://localhost:5000/api
+
+Core endpoint groups:
+- Auth: /auth/signup, /auth/verify-otp, /auth/login
+- Profiles: /profiles
+- Products: /products
+- Health: /health/records, /health/incidents
+
+For detailed backend API notes, see backend/README.md.
+
+## Common Problems and Solutions
+
+Use this section first when something breaks.
+
+### Problem: npm start fails at repository root
+
+Cause:
+- The root folder is not the app runtime folder.
+
+Solution:
+- Run mobile commands from mobile directory
+- Run backend commands from backend directory
+
+Example:
+
+```powershell
+cd mobile
+npm start
+```
+
+### Problem: Expo fails to start or hangs
+
+Try:
+
+```powershell
+cd mobile
+npm run reset
+```
+
+If still failing:
+
+```powershell
+cd mobile
+Remove-Item -Recurse -Force node_modules
+npm install
+npm run reset
+```
+
+### Problem: App cannot connect to backend
+
+Check:
+- Backend is running on port 5000
+- Mobile API base URL points to the right host
+- For physical device, use your machine LAN IP instead of localhost
+
+### Problem: Prisma/database errors
+
+Try:
+
+```powershell
+cd backend
 npm run db:generate
 npm run db:migrate
 ```
 
-6. Start development server:
-```bash
-npm run dev
+Also verify:
+- PostgreSQL is running
+- DATABASE_URL is valid
+
+### Problem: OTP emails are not sent
+
+Check:
+- EMAIL_USER and EMAIL_PASSWORD are correct
+- SMTP host/port values are correct
+- If using Gmail, use an App Password
+
+### Problem: Port already in use
+
+Change backend port in backend/.env, for example:
+
+```env
+PORT=5001
 ```
 
-Backend will run on `http://localhost:5000`
+Then update mobile API URL to match.
 
-### Mobile App Setup
+## How to Suggest a Better Fix
 
-1. Navigate to mobile directory:
-```bash
-cd mobile
+If you find a recurring problem, suggest a solution so the team can improve onboarding.
+
+Include these 5 items:
+1. What command you ran
+2. Exact error message
+3. Your OS and environment (device/emulator, Node version)
+4. What you already tried
+5. Your proposed fix (or hypothesis)
+
+Suggested format:
+
+```text
+Issue:
+Steps:
+Observed Error:
+Expected:
+Tried:
+Proposed Fix:
 ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+Good places to update:
+- This README troubleshooting section
+- SETUP_GUIDE.md for setup improvements
+- backend/README.md for API/backend-specific fixes
 
-3. Start Expo development server:
-```bash
-npm start
-```
+## MVP Features Implemented
 
-4. Run on device/emulator:
-   - Press `a` for Android
-   - Press `i` for iOS
-   - Scan QR code with Expo Go app
+- Email + OTP authentication
+- Multi-profile management
+- Product scanning and product management
+- Ingredient and suitability analysis
+- Expiry monitoring and alerts
+- Health record and incident tracking
 
-## 📱 API Endpoints
-
-### Authentication
-- `POST /api/auth/signup` - Create account
-- `POST /api/auth/verify-otp` - Verify email
-- `POST /api/auth/login` - Login
-- `POST /api/auth/resend-otp` - Resend OTP
-
-### Profiles
-- `POST /api/profiles` - Create profile
-- `GET /api/profiles` - Get all profiles
-- `GET /api/profiles/:id` - Get profile
-- `PUT /api/profiles/:id` - Update profile
-- `DELETE /api/profiles/:id` - Delete profile
-- `POST /api/profiles/verify-switch` - Verify password
-
-### Products
-- `POST /api/products` - Add product
-- `GET /api/products?profileId=xxx` - Get products
-- `GET /api/products/:id` - Get product
-- `PUT /api/products/:id/suitability` - Mark safe/unsafe
-- `DELETE /api/products/:id` - Delete product
-- `POST /api/products/scan-barcode` - Scan barcode
-- `POST /api/products/scan-image` - Upload image
-
-### Health
-- `POST /api/health/records` - Upload health document
-- `GET /api/health/records/:profileId` - Get records
-- `POST /api/health/incidents` - Report incident
-- `GET /api/health/incidents/:profileId` - Get incidents
-
-## 🛠 Tech Stack
-
-### Backend
-- **Runtime**: Node.js
-- **Framework**: Express.js
-- **Language**: TypeScript
-- **Database**: PostgreSQL
-- **ORM**: Prisma
-- **Authentication**: JWT + bcrypt
-- **Email**: Nodemailer
-- **Scheduling**: node-cron
-
-### Mobile
-- **Framework**: React Native
-- **Platform**: Expo
-- **Language**: TypeScript
-- **Navigation**: Expo Router
-- **Camera**: expo-camera
-- **Storage**: AsyncStorage
-- **HTTP**: Axios
-
-## 🎨 Design Philosophy
-
-1. **Human-in-the-loop AI** - AI assists, doesn't dictate
-2. **Transparency** - All recommendations are explainable
-3. **Safety-first** - Clear warnings for allergens
-4. **Family-focused** - Multi-profile with isolated data
-5. **Privacy-conscious** - Encrypted health data
-
-## 📋 Phase 2 Features (Future)
-
-- [ ] OCR integration (Tesseract.js / Google Vision)
-- [ ] Barcode API integration (Open Food Facts)
-- [ ] Advanced ML model for recommendations
-- [ ] Push notifications
-- [ ] Offline mode with sync
-- [ ] Health record OCR processing
-- [ ] Location-based doctor suggestions
-- [ ] Family sharing features
-- [ ] Product history analytics
-
-## 🔒 Security Features
+## Security Notes
 
 - Password hashing with bcrypt
-- JWT-based authentication
-- OTP email verification
-- Password-protected profile switching
-- Encrypted health data storage
+- JWT authentication
 - Input validation and sanitization
-- SQL injection prevention (Prisma)
+- Prisma ORM protections against SQL injection
 
-## 📄 License
+## License
 
 MIT
-
-## 👨‍💻 Author
-
-Built with ❤️ for family food safety
-
----
-
-**Defendish** - Keeping your family safe, one ingredient at a time.

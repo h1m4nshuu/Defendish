@@ -3,16 +3,20 @@ import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import AnimatedSplash from '@/components/AnimatedSplash';
 
 const ONBOARDING_KEY = 'onboarding_completed';
 
 export default function WelcomeScreen() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    checkOnboarding();
-  }, []);
+    if (!showSplash) {
+      checkOnboarding();
+    }
+  }, [showSplash]);
 
   const checkOnboarding = async () => {
     try {
@@ -33,13 +37,12 @@ export default function WelcomeScreen() {
     }
   };
 
-  if (isLoading) {
+  if (showSplash) {
     return (
-      <View style={[styles.container, { justifyContent: 'center' }]}>
-        <StatusBar style="light" />
-        <Text style={styles.logo}>🛡️</Text>
-        <Text style={[styles.title, { fontSize: 24 }]}>Loading...</Text>
-      </View>
+      <AnimatedSplash
+        duration={3000}
+        onAnimationComplete={() => setShowSplash(false)}
+      />
     );
   }
 

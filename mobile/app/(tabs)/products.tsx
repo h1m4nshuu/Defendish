@@ -469,13 +469,6 @@ export default function ProductsScreen() {
         />
       )}
 
-      <TouchableOpacity
-        style={styles.fab}
-        onPress={() => setShowAddModal(true)}
-      >
-        <Text style={styles.fabIcon}>+</Text>
-      </TouchableOpacity>
-
       {/* Add Product Modal */}
       <Modal
         visible={showAddModal}
@@ -810,27 +803,6 @@ const styles = StyleSheet.create({
   ingredientCount: {
     color: '#6b7280',
     fontSize: 14,
-  },
-  fab: {
-    position: 'absolute',
-    bottom: 80,
-    right: 20,
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: '#2563eb',
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 8,
-  },
-  fabIcon: {
-    color: '#ffffff',
-    fontSize: 32,
-    fontWeight: '300',
   },
   modalOverlay: {
     flex: 1,

@@ -1,13 +1,17 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Platform } from 'react-native';
+import { getApiBaseUrl, getApiBaseUrlCandidates, getApiHostUrl } from './apiConfig';
 
-// Use localhost for web, IP address for mobile
-const API_URL = Platform.OS === 'web' 
-  ? 'http://localhost:5000/api'
-  : 'http://10.131.93.32:5000/api';
+const API_URL = getApiBaseUrl();
+const API_URL_CANDIDATES = getApiBaseUrlCandidates();
+
+type RetryableConfig = {
+  _baseUrlRetryIndex?: number;
+  _baseUrlRetryCandidates?: string[];
+};
 
 console.log('API URL:', API_URL);
+console.log('API URL candidates:', API_URL_CANDIDATES);
 
 const api = axios.create({
   baseURL: API_URL,
@@ -31,7 +35,14 @@ api.interceptors.request.use(
 
 // Response interceptor for error handling
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    const responseBaseUrl = response.config.baseURL;
+    if (responseBaseUrl && api.defaults.baseURL !== responseBaseUrl) {
+      api.defaults.baseURL = responseBaseUrl;
+      console.log('Using API URL:', api.defaults.baseURL);
+    }
+    return response;
+  },
   async (error) => {
     if (error.response?.status === 401) {
       // Token expired or invalid
@@ -39,6 +50,27 @@ api.interceptors.response.use(
       await AsyncStorage.removeItem('userData');
       // Navigate to login (handled by app)
     }
+
+    if (!error.response && error.config) {
+      const config = error.config as typeof error.config & RetryableConfig;
+      const currentBaseUrl = config.baseURL || API_URL;
+
+      if (!config._baseUrlRetryCandidates) {
+        config._baseUrlRetryCandidates = API_URL_CANDIDATES.filter((candidate) => candidate !== currentBaseUrl);
+        config._baseUrlRetryIndex = 0;
+      }
+
+      const retryIndex = config._baseUrlRetryIndex ?? 0;
+      const nextBaseUrl = config._baseUrlRetryCandidates[retryIndex];
+
+      if (nextBaseUrl) {
+        config._baseUrlRetryIndex = retryIndex + 1;
+        config.baseURL = nextBaseUrl;
+        console.log('Retrying request with fallback API URL:', config.baseURL);
+        return api.request(config);
+      }
+    }
+
     return Promise.reject(error);
   }
 );
@@ -49,9 +81,7 @@ export const getImageUrl = (path: string | undefined | null): string | undefined
   if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('file://')) {
     return path;
   }
-  const baseURL = Platform.OS === 'web' 
-    ? 'http://localhost:5000'
-    : 'http://10.131.93.32:5000';
+  const baseURL = getApiHostUrl();
   return `${baseURL}${path}`;
 };
 

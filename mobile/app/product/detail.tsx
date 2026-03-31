@@ -5,6 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { productService } from '../../services/product.service';
 import { profileService } from '../../services/profile.service';
 import { userService } from '../../services/user.service';
+import NuriButton from '../../components/NuriButton';
 
 export default function ProductDetailScreen() {
   const router = useRouter();
@@ -169,11 +170,12 @@ export default function ProductDetailScreen() {
   }
 
   return (
-    <ScrollView 
-      style={styles.container}
-      contentContainerStyle={{ paddingBottom: insets.bottom + 20 }}
-    >
-      <View style={styles.header}>
+    <View style={styles.screen}>
+      <ScrollView 
+        style={styles.container}
+        contentContainerStyle={{ paddingBottom: insets.bottom + 110 }}
+      >
+        <View style={styles.header}>
         <View style={styles.headerTop}>
           <TouchableOpacity onPress={() => router.back()}>
             <Text style={styles.backButton}>← Back</Text>
@@ -316,11 +318,34 @@ export default function ProductDetailScreen() {
           </TouchableOpacity>
         </View>
       </View>
-    </ScrollView>
+
+      </ScrollView>
+
+      <NuriButton
+        source="product"
+        context={{
+          source: 'product',
+          product: {
+            id: product.id,
+            name: product.name,
+            ingredients: product.ingredients || [],
+            suitabilityStatus: product.suitabilityStatus,
+            expiryDate: product.expiryDate,
+          },
+        }}
+        side="left"
+        leftOffset={20}
+        bottomOffset={80}
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    backgroundColor: '#f9fafb',
+  },
   container: {
     flex: 1,
     backgroundColor: '#f9fafb',

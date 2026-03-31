@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, Platform, Pressable } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, Platform } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useFocusEffect } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { profileService } from '../../services/profile.service';
 import { authService } from '../../services/auth.service';
 import ProfileAvatar from '../../components/ProfileAvatar';
+import { useTheme } from '../../hooks/useTheme';
 
 export default function ProfileScreen() {
   const router = useRouter();
   const [currentProfile, setCurrentProfile] = useState<any>(null);
-  const [profiles, setProfiles] = useState([]);
+  const { colors } = useTheme();
 
   useEffect(() => {
     loadProfiles();
@@ -22,13 +24,24 @@ export default function ProfileScreen() {
 
   const loadProfiles = async () => {
     try {
-      const response = await profileService.getProfiles();
-      setProfiles(response.data);
       const current = await profileService.getCurrentProfile();
       setCurrentProfile(current);
     } catch (error) {
       Alert.alert('Error', 'Failed to load profiles');
     }
+  };
+
+  const getProfileIcon = (profile: any) => {
+    const relation = String(profile?.relation || '').toLowerCase();
+    if (relation.includes('self')) return 'account-circle-outline';
+    if (relation.includes('child') || relation.includes('kid')) return 'baby-face-outline';
+    if (relation.includes('spouse') || relation.includes('wife') || relation.includes('husband')) return 'heart-outline';
+    if (relation.includes('parent') || relation.includes('mother') || relation.includes('father')) return 'account-supervisor-outline';
+    return 'account-outline';
+  };
+
+  const handleHealthIncidents = () => {
+    Alert.alert('Coming soon', 'Health Incidents will be available in a future update.');
   };
 
   const handleLogout = async () => {
@@ -43,27 +56,26 @@ export default function ProfileScreen() {
     };
 
     if (Platform.OS === 'web') {
-      // Use native confirm on web
       if (confirm('Are you sure you want to logout?')) {
         await performLogout();
       }
-    } else {
-      // Use Alert.alert on mobile
-      Alert.alert('Logout', 'Are you sure you want to logout?', [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Logout',
-          style: 'destructive',
-          onPress: performLogout,
-        },
-      ]);
+      return;
     }
+
+    Alert.alert('Logout', 'Are you sure you want to logout?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Logout',
+        style: 'destructive',
+        onPress: performLogout,
+      },
+    ]);
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Profile</Text>
+    <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
+      <View style={[styles.header, { backgroundColor: colors.backgroundSecondary, borderBottomColor: colors.border }]}>
+        <Text style={[styles.headerTitle, { color: colors.text }]}>Profile</Text>
       </View>
 
       {currentProfile && (
@@ -115,51 +127,66 @@ export default function ProfileScreen() {
       )}
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>All Profiles</Text>
-        {profiles.map((profile: any) => (
-          <TouchableOpacity
-            key={profile.id}
-            style={styles.profileCard}
-            onPress={() =>
-              router.push({ pathname: '/profile/select', params: { action: 'switch' } })
-            }
-          >
-            <View>
-              <Text style={styles.profileName}>{profile.name}</Text>
-              <Text style={styles.profileRelation}>{profile.relation}</Text>
-            </View>
-            <Text style={styles.arrow}>›</Text>
-          </TouchableOpacity>
-        ))}
+        <TouchableOpacity
+          style={[styles.switchProfileButton, { backgroundColor: colors.card }]}
+          onPress={() =>
+            router.push({ pathname: '/profile/select', params: { action: 'switch' } })
+          }
+        >
+          <View style={[styles.iconContainer, { backgroundColor: colors.infoBackground }]}>
+            <MaterialCommunityIcons
+              name="account-switch-outline"
+              size={24}
+              color={colors.primary}
+            />
+          </View>
+          <Text style={[styles.switchProfileText, { color: colors.text }]}>Switch or Add Profile</Text>
+          <Text style={[styles.arrow, { color: colors.textTertiary }]}>›</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.addProfileButton}
-          onPress={() => router.push('/profile/create')}
+          style={[styles.menuItem, { backgroundColor: colors.card }]}
+          onPress={() => router.push('/profile/medicines')}
         >
-          <Text style={styles.addProfileText}>+ Add New Profile</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.section}>
-        <TouchableOpacity style={styles.menuItem}>
-          <Text style={styles.menuItemText}>Health Records</Text>
-          <Text style={styles.arrow}>›</Text>
+          <View style={[styles.iconContainer, { backgroundColor: colors.infoBackground }]}>
+            <MaterialCommunityIcons name="pill" size={24} color={colors.primary} />
+          </View>
+          <Text style={[styles.menuItemText, { color: colors.text }]}>Dose Reminder</Text>
+          <Text style={[styles.arrow, { color: colors.textTertiary }]}>›</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menuItem}>
-          <Text style={styles.menuItemText}>Health Incidents</Text>
-          <Text style={styles.arrow}>›</Text>
+        <TouchableOpacity
+          style={[styles.menuItem, { backgroundColor: colors.card }]}
+          onPress={() => router.push('/settings/health')}
+        >
+          <View style={[styles.iconContainer, { backgroundColor: colors.infoBackground }]}>
+            <MaterialCommunityIcons name="heart-pulse" size={24} color={colors.primary} />
+          </View>
+          <Text style={[styles.menuItemText, { color: colors.text }]}>Health Records</Text>
+          <Text style={[styles.arrow, { color: colors.textTertiary }]}>›</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menuItem}>
-          <Text style={styles.menuItemText}>Settings</Text>
-          <Text style={styles.arrow}>›</Text>
+        <TouchableOpacity
+          style={[styles.menuItem, { backgroundColor: colors.card }]}
+          onPress={handleHealthIncidents}
+        >
+          <View style={[styles.iconContainer, { backgroundColor: colors.infoBackground }]}>
+            <MaterialCommunityIcons name="alert-circle-outline" size={24} color={colors.primary} />
+          </View>
+          <Text style={[styles.menuItemText, { color: colors.text }]}>Health Incidents</Text>
+          <Text style={[styles.arrow, { color: colors.textTertiary }]}>›</Text>
         </TouchableOpacity>
 
-        <Pressable style={styles.logoutButton} onPress={handleLogout}>
+        <TouchableOpacity
+          style={styles.logoutButton}
+          onPress={handleLogout}
+          activeOpacity={0.8}
+        >
           <Text style={styles.logoutText}>Logout</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
+
+      <View style={styles.spacer} />
     </ScrollView>
   );
 }
@@ -252,73 +279,53 @@ const styles = StyleSheet.create({
   section: {
     marginBottom: 20,
   },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#1f2937',
-    marginHorizontal: 20,
-    marginBottom: 12,
-  },
-  profileCard: {
+  switchProfileButton: {
     backgroundColor: '#ffffff',
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
     padding: 16,
     marginHorizontal: 20,
     marginBottom: 8,
     borderRadius: 12,
   },
-  profileName: {
+  switchProfileText: {
     fontSize: 16,
-    fontWeight: '600',
+    flex: 1,
     color: '#1f2937',
-  },
-  profileRelation: {
-    fontSize: 14,
-    color: '#6b7280',
-    marginTop: 2,
+    fontWeight: '600',
   },
   arrow: {
     fontSize: 24,
     color: '#9ca3af',
   },
-  addProfileButton: {
-    backgroundColor: '#ffffff',
-    padding: 16,
-    marginHorizontal: 20,
-    marginTop: 4,
-    borderRadius: 12,
-    borderWidth: 2,
-    borderColor: '#e5e7eb',
-    borderStyle: 'dashed',
-  },
-  addProfileText: {
-    color: '#2563eb',
-    fontSize: 16,
-    fontWeight: '600',
-    textAlign: 'center',
-  },
   menuItem: {
     backgroundColor: '#ffffff',
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
     padding: 16,
     marginHorizontal: 20,
-    marginBottom: 8,
+    marginTop: 8,
     borderRadius: 12,
+  },
+  iconContainer: {
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: '#f0f9ff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12,
   },
   menuItemText: {
     fontSize: 16,
+    flex: 1,
     color: '#1f2937',
   },
   logoutButton: {
     backgroundColor: '#ffffff',
     padding: 16,
     marginHorizontal: 20,
-    marginTop: 4,
-    marginBottom: 100,
+    marginTop: 12,
     borderRadius: 12,
     borderWidth: 1,
     borderColor: '#dc2626',
@@ -328,5 +335,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     textAlign: 'center',
+  },
+  spacer: {
+    height: 100,
   },
 });

@@ -2,6 +2,10 @@
   "devDependencies": {
     "@prisma/client": "^7.2.0",
     "prisma": "^7.2.0",
-    "tsx": "^4.21.0"
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "expo": "^55.0.10-canary-20260328-2049187"
   }
 }
