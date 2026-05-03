@@ -95,7 +95,7 @@ jobs:
     needs: [migrate-staging]
     runs-on: ubuntu-latest
     env:
-      REGISTRY: ${{ secrets.ACR_LOGIN_SERVER }} # e.g. myacr.azurecr.io
+      REGISTRY: ${{ secrets.ACR_LOGIN_SERVER }}
       IMAGE_NAME: ${{ secrets.BACKEND_APP_NAME }}
       IMAGE_TAG: ${{ github.sha }}
 
@@ -129,37 +129,18 @@ jobs:
         working-directory: backend
         run: npx prisma generate
 
-      - name: Install PostgreSQL client (for backup/restore)
+      - name: Install PostgreSQL client
         run: |
           sudo apt-get update
           sudo apt-get install -y postgresql-client
 
-      - name: Backup PostgreSQL (pg_dump)
+      - name: Run Prisma migrations (production)
         working-directory: backend
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          BACKUP_NAME: prisma_backup_${{ github.run_id }}.dump
         run: |
           set -euo pipefail
-          echo "Creating DB backup to $BACKUP_NAME"
-          DATABASE_URL_PSQL=$(echo "$DATABASE_URL" | sed -E 's/([?&])schema=[^&]*&?/\1/g; s/[?&]$//; s/\?&/\?/g')
-          pg_dump --format=custom --file="$BACKUP_NAME" "$DATABASE_URL_PSQL"
-          ls -lh "$BACKUP_NAME"
-
-      - name: Upload DB backup artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: prisma-backup-${{ github.run_id }}
-          path: backend/prisma_backup_${{ github.run_id }}.dump
-
-      - name: Run Prisma migrations (safe deploy with rollback)
-        working-directory: backend
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          BACKUP_PATH: backend/prisma_backup_${{ github.run_id }}.dump
-        run: |
-          set -euo pipefail
-          echo "Running prisma migrate deploy"
+          echo "Running prisma migrate deploy on PRODUCTION"
           set +e
           MIGRATE_OUTPUT=$(npx prisma migrate deploy 2>&1)
           MIGRATE_EXIT=$?
@@ -169,34 +150,20 @@ jobs:
             echo "Prisma is targeting SQLite in CI. Refusing to continue." >&2
             exit 1
           fi
-          if [ $MIGRATE_EXIT -eq 0 ]; then
-            echo "Prisma migrations applied successfully"
-          else
-            echo "Prisma migration failed! Attempting rollback using backup: $BACKUP_PATH" >&2
-            if command -v pg_restore >/dev/null 2>&1; then
-              echo "Restoring database from backup..."
-              DATABASE_URL_PSQL=$(echo "$DATABASE_URL" | sed -E 's/([?&])schema=[^&]*&?/\1/g; s/[?&]$//; s/\?&/\?/g')
-              pg_restore --exit-on-error --clean --no-owner --dbname="$DATABASE_URL_PSQL" "$BACKUP_PATH" && echo "Restore successful" || echo "Restore failed — manual intervention required" >&2
-            else
-              echo "pg_restore not available; cannot restore automatically" >&2
-            fi
-            exit 1
+          if [ $MIGRATE_EXIT -ne 0 ]; then
+            echo "Production migration failed" >&2
+            exit $MIGRATE_EXIT
           fi
 
-      - name: Log applied migrations (postgres)
+      - name: Log applied migrations (production)
         working-directory: backend
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
           set -euo pipefail
+          echo "Listing last 10 applied migrations (production)..."
           DATABASE_URL_PSQL=$(echo "$DATABASE_URL" | sed -E 's/([?&])schema=[^&]*&?/\1/g; s/[?&]$//; s/\?&/\?/g')
-          echo "Listing last 10 applied migrations (if table exists)..."
-          if psql "$DATABASE_URL_PSQL" -c "SELECT 1" > /dev/null 2>&1; then
-            psql "$DATABASE_URL_PSQL" -Atc "SELECT migration_name || ' | ' || finished_at FROM \"_prisma_migrations\" ORDER BY finished_at DESC LIMIT 10;" || echo "_prisma_migrations table not found or query failed"
-          else
-            echo "Database connectivity failed during migration logging" >&2
-            exit 1
-          fi
+          psql "$DATABASE_URL_PSQL" -Atc "SELECT migration_name || ' | ' || finished_at FROM \"_prisma_migrations\" ORDER BY finished_at DESC LIMIT 10;" || echo "_prisma_migrations table not found or query failed"
 
       - name: Check DB connectivity
         working-directory: backend
@@ -205,13 +172,9 @@ jobs:
         run: |
           set -euo pipefail
           DATABASE_URL_PSQL=$(echo "$DATABASE_URL" | sed -E 's/([?&])schema=[^&]*&?/\1/g; s/[?&]$//; s/\?&/\?/g')
-          echo "Verifying DB connectivity..."
-          if ! psql "$DATABASE_URL_PSQL" -c "SELECT 1" ; then
-            echo "Postgres connectivity check failed" >&2
-            exit 1
-          fi
+          psql "$DATABASE_URL_PSQL" -c "SELECT 'Database connected successfully' as status;" || exit 1
 
-      - name: Validate migrations applied
+      - name: Validate migrations applied (production)
         working-directory: backend
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
@@ -220,81 +183,30 @@ jobs:
           DATABASE_URL_PSQL=$(echo "$DATABASE_URL" | sed -E 's/([?&])schema=[^&]*&?/\1/g; s/[?&]$//; s/\?&/\?/g')
           COUNT=$(psql "$DATABASE_URL_PSQL" -Atc "SELECT COUNT(*) FROM \"_prisma_migrations\";" 2>/dev/null || echo "0")
           COUNT=$(echo "$COUNT" | tr -d '\r')
-          echo "Applied migrations count: $COUNT"
+          echo "Production applied migrations count: $COUNT"
           if [ -z "$COUNT" ] || [ "$COUNT" -lt 1 ]; then
-            echo "No migrations applied or migration table missing - failing deployment" >&2
+            echo "No migrations applied on production or migration table missing - failing" >&2
             exit 1
           fi
 
+      - name: Build backend Docker image
+        run: |
+          cd backend
+          docker build -t $REGISTRY/$IMAGE_NAME:$IMAGE_TAG -f Dockerfile .
+          docker tag $REGISTRY/$IMAGE_NAME:$IMAGE_TAG $REGISTRY/$IMAGE_NAME:latest
+
       - name: Login to ACR
-        uses: docker/login-action@v2
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
-
-      - name: Build and push backend image
-        uses: docker/build-push-action@v4
-        with:
-          context: ./backend
-          file: ./backend/Dockerfile
-          push: true
-          tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-          cache-to: type=inline
-
-      - name: Azure Login (service principal)
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Configure Web App to use new container image
         run: |
-          az webapp config container set \
-            -g ${{ secrets.RESOURCE_GROUP }} \
-            -n ${{ secrets.BACKEND_APP_NAME }} \
-            --docker-custom-image-name ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} \
-            --docker-registry-server-url https://${{ secrets.ACR_LOGIN_SERVER }}
+          echo ${{ secrets.ACR_PASSWORD }} | docker login -u ${{ secrets.ACR_USERNAME }} --password-stdin $REGISTRY
 
-      - name: Set Web App settings (secure values from secrets)
+      - name: Push image to ACR
         run: |
-          az webapp config appsettings set -g ${{ secrets.RESOURCE_GROUP }} -n ${{ secrets.BACKEND_APP_NAME }} --settings \
-            DATABASE_URL="${{ secrets.DATABASE_URL }}" \
-            JWT_SECRET="${{ secrets.JWT_SECRET }}" \
-            NODE_ENV=production \
-            CORS_ORIGINS="${{ secrets.CORS_ORIGINS }}"
+          docker push $REGISTRY/$IMAGE_NAME:$IMAGE_TAG
+          docker push $REGISTRY/$IMAGE_NAME:latest
 
-      - name: Restart Web App
-        run: az webapp restart -g ${{ secrets.RESOURCE_GROUP }} -n ${{ secrets.BACKEND_APP_NAME }}
-
-      - name: Wait for health endpoint
+      - name: Summary
         run: |
-          HEALTH_URL="https://${{ secrets.BACKEND_APP_NAME }}.azurewebsites.net/health"
-          echo "Checking $HEALTH_URL"
-          for i in {1..20}; do
-            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" $HEALTH_URL || true)
-            if [ "$HTTP_STATUS" = "200" ]; then
-              echo "Health OK"
-              exit 0
-            fi
-            echo "Attempt $i: status=$HTTP_STATUS; retrying in 5s..."
-            sleep 5
-          done
-          echo "Health check failed"
-          exit 1
-
-      - name: Cleanup old caches (optional)
-        if: always()
-        run: echo "Job finished"
-
-# Required repository secrets (set these in GitHub):
-# - AZURE_CREDENTIALS => JSON from `az ad sp create-for-rbac --name "gh-actions-defendish" --role contributor --scopes /subscriptions/<sub>`
-# - ACR_USERNAME, ACR_PASSWORD => from `az acr credential show -n <acr>`
-# - ACR_LOGIN_SERVER => <acrName>.azurecr.io
-# - RESOURCE_GROUP => resource group name (e.g., defendish-rg)
-# - BACKEND_APP_NAME => Azure Web App name for backend
-# - DATABASE_URL => Azure Postgres connection string (postgresql://...)
-# - JWT_SECRET => production JWT secret
-# - CORS_ORIGINS => comma-separated allowed origins
+          echo "✅ Staging migrations validated"
+          echo "✅ Production migrations deployed"
+          echo "✅ Backend image built and pushed to ACR"
+          echo "Container image: $REGISTRY/$IMAGE_NAME:$IMAGE_TAG"
