@@ -39,7 +39,19 @@ jobs:
         run: |
           set -euo pipefail
           echo "Running prisma migrate deploy against STAGING"
-          npx prisma migrate deploy
+          set +e
+          MIGRATE_OUTPUT=$(npx prisma migrate deploy 2>&1)
+          MIGRATE_EXIT=$?
+          set -e
+          echo "$MIGRATE_OUTPUT"
+          if echo "$MIGRATE_OUTPUT" | grep -q 'Datasource "db": SQLite'; then
+            echo "Prisma is targeting SQLite in CI. Refusing to continue." >&2
+            exit 1
+          fi
+          if [ $MIGRATE_EXIT -ne 0 ]; then
+            echo "Staging migration failed" >&2
+            exit $MIGRATE_EXIT
+          fi
 
       - name: Log applied migrations (staging)
         working-directory: backend
@@ -48,7 +60,8 @@ jobs:
         run: |
           set -euo pipefail
           echo "Listing last 10 applied migrations (staging)..."
-          psql "$DATABASE_URL" -Atc "SELECT migration_name || ' | ' || finished_at FROM \"_prisma_migrations\" ORDER BY finished_at DESC LIMIT 10;" || echo "_prisma_migrations table not found or query failed"
+          DATABASE_URL_PSQL=$(echo "$DATABASE_URL" | sed -E 's/([?&])schema=[^&]*&?/\1/g; s/[?&]$//; s/\?&/\?/g')
+          psql "$DATABASE_URL_PSQL" -Atc "SELECT migration_name || ' | ' || finished_at FROM \"_prisma_migrations\" ORDER BY finished_at DESC LIMIT 10;" || echo "_prisma_migrations table not found or query failed"
 
       - name: Validate migrations applied (staging)
         working-directory: backend
@@ -56,7 +69,8 @@ jobs:
           DATABASE_URL: ${{ secrets.STAGING_DATABASE_URL }}
         run: |
           set -euo pipefail
-          COUNT=$(psql "$DATABASE_URL" -Atc "SELECT COUNT(*) FROM \"_prisma_migrations\";" 2>/dev/null || echo "0")
+          DATABASE_URL_PSQL=$(echo "$DATABASE_URL" | sed -E 's/([?&])schema=[^&]*&?/\1/g; s/[?&]$//; s/\?&/\?/g')
+          COUNT=$(psql "$DATABASE_URL_PSQL" -Atc "SELECT COUNT(*) FROM \"_prisma_migrations\";" 2>/dev/null || echo "0")
           COUNT=$(echo "$COUNT" | tr -d '\r')
           echo "Staging applied migrations count: $COUNT"
           if [ -z "$COUNT" ] || [ "$COUNT" -lt 1 ]; then
@@ -116,7 +130,8 @@ jobs:
         run: |
           set -euo pipefail
           echo "Creating DB backup to $BACKUP_NAME"
-          pg_dump --format=custom --file="$BACKUP_NAME" "$DATABASE_URL"
+          DATABASE_URL_PSQL=$(echo "$DATABASE_URL" | sed -E 's/([?&])schema=[^&]*&?/\1/g; s/[?&]$//; s/\?&/\?/g')
+          pg_dump --format=custom --file="$BACKUP_NAME" "$DATABASE_URL_PSQL"
           ls -lh "$BACKUP_NAME"
 
       - name: Upload DB backup artifact
@@ -133,13 +148,23 @@ jobs:
         run: |
           set -euo pipefail
           echo "Running prisma migrate deploy"
-          if npx prisma migrate deploy; then
+          set +e
+          MIGRATE_OUTPUT=$(npx prisma migrate deploy 2>&1)
+          MIGRATE_EXIT=$?
+          set -e
+          echo "$MIGRATE_OUTPUT"
+          if echo "$MIGRATE_OUTPUT" | grep -q 'Datasource "db": SQLite'; then
+            echo "Prisma is targeting SQLite in CI. Refusing to continue." >&2
+            exit 1
+          fi
+          if [ $MIGRATE_EXIT -eq 0 ]; then
             echo "Prisma migrations applied successfully"
           else
             echo "Prisma migration failed! Attempting rollback using backup: $BACKUP_PATH" >&2
             if command -v pg_restore >/dev/null 2>&1; then
               echo "Restoring database from backup..."
-              pg_restore --exit-on-error --clean --no-owner --dbname="$DATABASE_URL" "$BACKUP_PATH" && echo "Restore successful" || echo "Restore failed — manual intervention required" >&2
+              DATABASE_URL_PSQL=$(echo "$DATABASE_URL" | sed -E 's/([?&])schema=[^&]*&?/\1/g; s/[?&]$//; s/\?&/\?/g')
+              pg_restore --exit-on-error --clean --no-owner --dbname="$DATABASE_URL_PSQL" "$BACKUP_PATH" && echo "Restore successful" || echo "Restore failed — manual intervention required" >&2
             else
               echo "pg_restore not available; cannot restore automatically" >&2
             fi
@@ -152,9 +177,10 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
           set -euo pipefail
+          DATABASE_URL_PSQL=$(echo "$DATABASE_URL" | sed -E 's/([?&])schema=[^&]*&?/\1/g; s/[?&]$//; s/\?&/\?/g')
           echo "Listing last 10 applied migrations (if table exists)..."
-          if psql "$DATABASE_URL" -c "SELECT 1" > /dev/null 2>&1; then
-            psql "$DATABASE_URL" -Atc "SELECT migration_name || ' | ' || finished_at FROM \"_prisma_migrations\" ORDER BY finished_at DESC LIMIT 10;" || echo "_prisma_migrations table not found or query failed"
+          if psql "$DATABASE_URL_PSQL" -c "SELECT 1" > /dev/null 2>&1; then
+            psql "$DATABASE_URL_PSQL" -Atc "SELECT migration_name || ' | ' || finished_at FROM \"_prisma_migrations\" ORDER BY finished_at DESC LIMIT 10;" || echo "_prisma_migrations table not found or query failed"
           else
             echo "Database connectivity failed during migration logging" >&2
             exit 1
@@ -166,8 +192,9 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
           set -euo pipefail
+          DATABASE_URL_PSQL=$(echo "$DATABASE_URL" | sed -E 's/([?&])schema=[^&]*&?/\1/g; s/[?&]$//; s/\?&/\?/g')
           echo "Verifying DB connectivity..."
-          if ! psql "$DATABASE_URL" -c "SELECT 1" ; then
+          if ! psql "$DATABASE_URL_PSQL" -c "SELECT 1" ; then
             echo "Postgres connectivity check failed" >&2
             exit 1
           fi
@@ -178,7 +205,8 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
           set -euo pipefail
-          COUNT=$(psql "$DATABASE_URL" -Atc "SELECT COUNT(*) FROM \"_prisma_migrations\";" 2>/dev/null || echo "0")
+          DATABASE_URL_PSQL=$(echo "$DATABASE_URL" | sed -E 's/([?&])schema=[^&]*&?/\1/g; s/[?&]$//; s/\?&/\?/g')
+          COUNT=$(psql "$DATABASE_URL_PSQL" -Atc "SELECT COUNT(*) FROM \"_prisma_migrations\";" 2>/dev/null || echo "0")
           COUNT=$(echo "$COUNT" | tr -d '\r')
           echo "Applied migrations count: $COUNT"
           if [ -z "$COUNT" ] || [ "$COUNT" -lt 1 ]; then

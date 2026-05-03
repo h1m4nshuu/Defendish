@@ -3,14 +3,16 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
   id            String    @id @default(uuid())
   email         String    @unique
   password      String
+  oauthProvider String?
+  oauthId       String?
   isVerified    Boolean   @default(false)
   otp           String?
   otpExpiresAt  DateTime?
@@ -19,6 +21,8 @@ model User {
   updatedAt     DateTime  @updatedAt
   
   profiles      Profile[]
+
+  @@unique([oauthProvider, oauthId])
   
   @@map("users")
 }
