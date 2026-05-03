@@ -32,6 +32,17 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y postgresql-client
 
+      - name: Resolve any failed migrations (staging)
+        working-directory: backend
+        env:
+          DATABASE_URL: ${{ secrets.STAGING_DATABASE_URL }}
+        run: |
+          set +e
+          # Try to resolve any failed migrations by rolling them back
+          RESOLVE_OUTPUT=$(npx prisma migrate resolve --rolled-back 20251222071242_init 2>&1)
+          set -e
+          echo "$RESOLVE_OUTPUT" || true
+
       - name: Run Prisma migrations on Staging
         working-directory: backend
         env:
