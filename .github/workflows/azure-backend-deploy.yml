@@ -39,9 +39,10 @@ jobs:
         run: |
           set +e
           # Try to resolve any failed migrations by rolling them back
-          RESOLVE_OUTPUT=$(npx prisma migrate resolve --rolled-back 20251222071242_init 2>&1)
+          npx prisma migrate resolve --rolled-back 20251222071242_init 2>&1 || true
+          npx prisma migrate resolve --rolled-back 20251229185247_add_profile_photo 2>&1 || true
+          npx prisma migrate resolve --rolled-back 20251230000000_add_profile_photo 2>&1 || true
           set -e
-          echo "$RESOLVE_OUTPUT" || true
 
       - name: Run Prisma migrations on Staging
         working-directory: backend
