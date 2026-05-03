@@ -5,9 +5,9 @@ CREATE TABLE "users" (
     "password" TEXT NOT NULL,
     "isVerified" BOOLEAN NOT NULL DEFAULT false,
     "otp" TEXT,
-    "otpExpiresAt" DATETIME,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "otpExpiresAt" TIMESTAMP,
+    "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP NOT NULL
 );
 
 -- CreateTable
@@ -15,14 +15,14 @@ CREATE TABLE "profiles" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "userId" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "dateOfBirth" DATETIME,
+    "dateOfBirth" TIMESTAMP,
     "bloodGroup" TEXT,
     "height" REAL,
     "weight" REAL,
     "relation" TEXT NOT NULL,
     "allergies" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL,
+    "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP NOT NULL,
     CONSTRAINT "profiles_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -34,15 +34,15 @@ CREATE TABLE "products" (
     "barcode" TEXT,
     "ingredients" TEXT,
     "rawIngredients" TEXT NOT NULL,
-    "manufacturingDate" DATETIME,
-    "expiryDate" DATETIME,
+    "manufacturingDate" TIMESTAMP,
+    "expiryDate" TIMESTAMP,
     "dosage" TEXT,
     "storageInstructions" TEXT,
     "imageUrl" TEXT,
     "suitabilityStatus" TEXT NOT NULL DEFAULT 'not_checked',
     "aiRecommendation" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL,
+    "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP NOT NULL,
     CONSTRAINT "products_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "profiles" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -56,7 +56,7 @@ CREATE TABLE "health_records" (
     "allergies" TEXT,
     "diagnoses" TEXT,
     "medications" TEXT,
-    "uploadedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "uploadedAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT "health_records_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "profiles" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -67,7 +67,7 @@ CREATE TABLE "health_incidents" (
     "productId" TEXT,
     "symptoms" TEXT NOT NULL,
     "severity" TEXT NOT NULL,
-    "timestamp" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "timestamp" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "actionTaken" TEXT,
     CONSTRAINT "health_incidents_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "profiles" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT "health_incidents_productId_fkey" FOREIGN KEY ("productId") REFERENCES "products" ("id") ON DELETE SET NULL ON UPDATE CASCADE
